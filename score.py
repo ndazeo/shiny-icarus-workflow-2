@@ -1006,7 +1006,7 @@ def main():
     
     untar('pred', args.pred)
     preds = []
-    for root, dirs, files in os.walk(".", topdown=False):
+    for root, dirs, files in os.walk("pred", topdown=False):
         for file in files:
             preds.append(os.path.join(root,file))
     for file in preds:
