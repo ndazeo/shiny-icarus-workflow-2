@@ -2,11 +2,10 @@
 
 cwlVersion: v1.0
 class: Workflow
-label: <YOUR CHALLENGE> Evaluation
+label: shiny-icarus Evaluation
 doc: >
-  BRIEF DESCRIPTION ABOUT THE CHALLENGE, e.g.
-  This workflow will run and evaluate Docker submissions to the
-  Awesome Challenge (syn123). Metrics returned are x, y, z.
+  This workflow will run and evaluate test set submissions to the
+  shiny-icarus Challenge.
 
 requirements:
   - class: StepInputExpressionRequirement
@@ -33,7 +32,7 @@ steps:
         source: "#submitterUploadSynId"
       # TODO: replace `valueFrom` with the admin user ID or admin team ID
       - id: principalid
-        valueFrom: "3379097"
+        valueFrom: "3461408"
       - id: permissions
         valueFrom: "download"
       - id: synapse_config
@@ -60,7 +59,7 @@ steps:
     in:
       # TODO: replace `valueFrom` with the Synapse ID to the challenge goldstandard
       - id: synapseid
-        valueFrom: "syn18081597"
+        valueFrom: "syn50915037"
       - id: synapse_config
         source: "#synapseConfig"
     out:
@@ -129,6 +128,10 @@ steps:
         source: "#download_goldstandard/filepath"
       - id: check_validation_finished 
         source: "#check_status/finished"
+      - id: script
+        default:
+          class: File
+          location: "score.py"
     out:
       - id: results
       
