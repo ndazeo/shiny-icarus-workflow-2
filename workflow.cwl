@@ -122,7 +122,7 @@ steps:
   score:
     run: steps/score.cwl
     in:
-      - id: input_file
+      - id: input
         source: "#download_submission/filepath"
       - id: goldstandard
         source: "#download_goldstandard/filepath"
