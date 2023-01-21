@@ -1005,6 +1005,13 @@ def main():
     print("ref", os.listdir('ref'))
     
     untar('pred', args.pred)
+    preds = []
+    for root, dirs, files in os.walk(".", topdown=False):
+        for file in files:
+            preds.append(file)
+    for file in preds:
+        rootfile = os.path.join('pred', os.path.basename(file))
+        os.rename(file, rootfile)
     print("pred", os.listdir('pred'))
     
     result = evaluate_folder('ref', 'pred', args.l)
