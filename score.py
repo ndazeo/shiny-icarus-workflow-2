@@ -1008,7 +1008,7 @@ def main():
     preds = []
     for root, dirs, files in os.walk(".", topdown=False):
         for file in files:
-            preds.append(file)
+            preds.append(os.path.join(root,file))
     for file in preds:
         rootfile = os.path.join('pred', os.path.basename(file))
         os.rename(file, rootfile)
